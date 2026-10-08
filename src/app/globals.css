@@ -1,0 +1,65 @@
+@import "tailwindcss";
+
+/* E5vös StudenTalk design tokens. Every color, font and radius on the site comes from here. */
+@theme {
+  --color-paper: #f1f2ee;
+  --color-surface: #ffffff;
+  --color-ink: #171a2b;
+  --color-muted: #5c6072;
+  --color-mist: #dadce8;
+  --color-signal: #2e4bff;
+  --color-signal-soft: #e3e7ff;
+
+  --font-display: var(--font-bricolage), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-instrument), ui-sans-serif, system-ui, sans-serif;
+
+  --radius-media: 1.5rem;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+}
+
+body {
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: var(--color-signal);
+  color: var(--color-surface);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-signal);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* Full-bleed rows whose first item lines up with the max-w-6xl content column. */
+.row-gutter {
+  --gutter: max(1rem, calc((100vw - 72rem) / 2 + 1rem));
+  padding-inline: var(--gutter);
+  scroll-padding-inline: var(--gutter);
+}
+@media (min-width: 40rem) {
+  .row-gutter {
+    --gutter: max(2rem, calc((100vw - 72rem) / 2 + 2rem));
+  }
+}
+
+/* Horizontal scrollers hide their scrollbar; the row is still keyboard and trackpad scrollable. */
+.no-scrollbar {
+  scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
